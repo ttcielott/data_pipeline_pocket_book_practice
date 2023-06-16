@@ -11,6 +11,7 @@ port = parser.get("mysql_config", "port")
 username = parser.get("mysql_config", "username")
 dbname = parser.get("mysql_config", "database")
 password = parser.get("mysql_config", "password")
+
 conn = pymysql.connect(host = hostname,
                        user = username,
                        password = password,
