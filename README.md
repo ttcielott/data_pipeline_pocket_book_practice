@@ -3,6 +3,7 @@ This repo is about my personal code practices that I followed along the book fro
 <br>
 <br>
 !['Data Pipelines Pocket Reference'](https://learning.oreilly.com/library/cover/9781492087823/250w/)
+-----
 
 
 ## Local Running
@@ -39,3 +40,14 @@ This repo is about my personal code practices that I followed along the book fro
    pip install -r requirements.txt
    ```
 
+-----
+
+### 2. MySQL Database
+You can install MySQL on your local computer, but I set up the database with docker.
+Please refer to [database/docker-compose.yml](database/docker-compose.yml).
+<br>
+<br>
+### 3. AWS Redshift Serverless Setup & Python Connection
+Please refer to the following documentations:
+- [documentation/01_aws_redshift_serverless_setup.md](documentation/01_aws_redshift_serverless_setup.md)
+- [documentation/02_aws_redshift_serverless_python_connection.md](documentation/02_aws_redshift_serverless_python_connection.md)
