@@ -3,10 +3,10 @@
 1. Go to AWS Redshift console page
 2. Click the workgroup you want connect
 3. Copy 'Endpoint' in 'General information'
+<br><img src = screenshots/aws_redshift_serverless_wg_endpoint.png width = 500></img>
 <br>
-    <img src = aws_redshift_serverless_wg_endpoint.png width = 500></img>
-<br>
-    **How to find credentials for connection to python**
+
+**How to find credentials for connection to python**
 <br>
     > From the endpoint you just copied in no.3, you can get host name, database name, and port number <br>
     endpoint: dana-workinggroup.704141972584.eu-west-2.redshift-serverless.amazonaws.com:5439/dev <br>
