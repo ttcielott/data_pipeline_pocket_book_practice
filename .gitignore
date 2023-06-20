@@ -1,3 +1,5 @@
+*.csv
+
 *.conf
 
 .DS_Store
