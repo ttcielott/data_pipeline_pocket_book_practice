@@ -78,7 +78,7 @@ with open(local_filename,'w') as fp:
 m_cursor.close()
 conn.close()
 
-load the aws_boto_credentials values
+# load the aws_boto_credentials values
 parser = configparser.ConfigParser()
 parser.read("pipeline.conf")
 access_key = parser.get("aws_boto_credentials", "access_key")
