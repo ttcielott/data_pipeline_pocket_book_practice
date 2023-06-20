@@ -8,7 +8,9 @@
 
 **How to find credentials for connection to python**
 <br>
-    > From the endpoint you just copied in no.3, you can get host name, database name, and port number <br>
+
+    >From the endpoint you just copied in no.3, you can get host name, database name, and port number <br>
+    
     endpoint: dana-workinggroup.704141972584.eu-west-2.redshift-serverless.amazonaws.com:5439/dev <br>
         - host : dana-workinggroup.704141972584.eu-west-2.redshift-serverless.amazonaws.com <br>
         - port : 5439 <br>
