@@ -51,3 +51,12 @@ Please refer to [database/docker-compose.yml](database/docker-compose.yml).
 Please refer to the following documentations:
 - [documentation/01_aws_redshift_serverless_setup.md](documentation/01_aws_redshift_serverless_setup.md)
 - [documentation/02_aws_redshift_serverless_python_connection.md](documentation/02_aws_redshift_serverless_python_connection.md)
+
+
+### 4. PostgresSQL Database
+As with MySQL database, there are several ways to create PostgresSQL database, but I used AWS RDS service. Learn [how to create and connect a PostgresSQL Database with Amazon RDS](https://aws.amazon.com/getting-started/hands-on/create-connect-postgresql-db/).
+
+
+### 5. MongoDB Atlas
+Atlas is a fully managed MongoDB service and includes a free-for-life tier with plenty of storage and computing power for learning and running samples. The code example of 'Extracting Data from MongoDB' in this book uses MongoDB Atlas, so I also used it for this practice.
+Learn [how to install the Atlas CLI and set up the Atlas](https://www.mongodb.com/docs/atlas/cli/stable/).
