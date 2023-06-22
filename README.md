@@ -1,5 +1,6 @@
 # The Book, Data Pipeline Pocket Reference [Code Practice]
-This repo is about my personal code practices that I followed along the book from ["Data Pipelines Pocket Reference"](https://www.oreilly.com/library/view/data-pipelines-pocket/9781492087823/) written by ['James Densmore'](https://www.linkedin.com/in/jamesdensmore/)
+
+This repo is about my personal code practices that I followed along the code exercises from the book, ["Data Pipelines Pocket Reference"](https://www.oreilly.com/library/view/data-pipelines-pocket/9781492087823/) written by ['James Densmore'](https://www.linkedin.com/in/jamesdensmore/)
 <br>
 <br>
 !['Data Pipelines Pocket Reference'](https://learning.oreilly.com/library/cover/9781492087823/250w/)
