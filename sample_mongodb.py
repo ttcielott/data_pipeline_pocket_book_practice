@@ -1,11 +1,11 @@
 from pymongo import MongoClient
 import datetime
 import configparser
+import certifi
 
 # load the mongo credential values
 parser = configparser.ConfigParser()
 parser.read("pipeline.conf")
-hostname = parser.get("mongo_config", "hostname")
 username = parser.get("mongo_config", "username")
 password = parser.get("mongo_config", "password")
 database_name = parser.get("mongo_config", "database_name")
@@ -13,13 +13,8 @@ collection = parser.get("mongo_config", "collection")
 
 
 mongo_client = MongoClient(
-    "mongodb+srv://" + username
-    + ":" + password
-    + "@" + hostname
-    + "/" + database_name
-    + "?retryWrites=true&"
-    + "w=majority&ssl=true&"
-    + "ssl_cert_reqs=CERT_NONE"
+    f"""mongodb+srv://{username}:{password}@{username.lower()}.y7gdbex.mongodb.net/?retryWrites=true&w=majority""",
+    tlsCAFile = certifi.where()
     )
 
 # connect to the db where the collection resides
