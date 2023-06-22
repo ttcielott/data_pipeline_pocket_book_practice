@@ -86,7 +86,7 @@ Learn [how to install the Atlas CLI and set up the Atlas](https://www.mongodb.co
       ```
       For whole code, please refer to [sample_mongodb.py](sample_mongodb.py)
 ### 6. REST API
-The REST API that the code exercise of the book is using is [Open Notify](http://open-notify.org/)'s iss-pass endpoint, but it was removed, so instead I used [Sunrise and Sunset](https://documenter.getpostman.com/view/8854915/Szf7znEe#bb7236b2-536e-4bdc-bfa2-fbe2fe1941eb) Public API in [REST_API_extract.py](REST_API_extract.py).
+The REST API that the code exercise of the book is using is [Open Notify](http://open-notify.org/)'s iss-pass endpoint. However, it is no longer available, so instead I used [Sunrise and Sunset](https://documenter.getpostman.com/view/8854915/Szf7znEe#bb7236b2-536e-4bdc-bfa2-fbe2fe1941eb) Public API in [REST_API_extract.py](REST_API_extract.py).
       
 
 
