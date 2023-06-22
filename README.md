@@ -60,7 +60,7 @@ As with MySQL database, there are several ways to create PostgresSQL database, b
 
 ### 5. MongoDB Atlas
 Atlas is a fully managed MongoDB service and includes a free-for-life tier with plenty of storage and computing power for learning and running samples. The code example of 'Extracting Data from MongoDB' in this book uses MongoDB Atlas, so I also used it for this practice.
-Learn [how to install the Atlas CLI and set up the Atlas](https://www.mongodb.com/docs/atlas/cli/stable/).
+Learn [how to install the Atlas CLI and set up the Atlas](https://www.mongodb.com/docs/atlas/cli/stable/). I created my database and collection using Mongo DB Atlas Console. 
 
    - How to Fix Error: `[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate`
 
