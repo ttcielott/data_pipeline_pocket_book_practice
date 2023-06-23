@@ -8,7 +8,7 @@
 2. Click the workgroup you want connect
 
 3. Copy 'Endpoint' in 'General information'
-<br><img  src = screenshots/aws_redshift_serverless_wg_endpoint.png  width = 500></img>
+<br><img  src = screenshots/aws_redshift_serverless_wg_endpoint.png  width = 800></img>
 
 
 	* **How to find credentials for connection to python**
