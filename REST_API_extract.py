@@ -7,9 +7,7 @@ import boto3
 # use requests library to query API endpoint (Sunrise and Sunset)
 # and get back the response 
 
-# London's coordinates
-lat = 51.5072
-lng = 0.1276
+# save the citys' coordinates 
 coordinate_list = [("london", 51.5072, 0.1276), 
                    ("Milan", 45.4642, 9.1900), 
                    ("Seoul", 37.5519, 126.9918)]
