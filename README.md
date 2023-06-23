@@ -87,11 +87,15 @@ Learn [how to install the Atlas CLI and set up the Atlas](https://www.mongodb.co
       For whole code, please refer to [sample_mongodb.py](sample_mongodb.py)
 ### 6. REST API
 The REST API that the code exercise of the book is using is [Open Notify](http://open-notify.org/)'s iss-pass endpoint. However, it is no longer available, so instead I used [Sunrise and Sunset](https://documenter.getpostman.com/view/8854915/Szf7znEe#bb7236b2-536e-4bdc-bfa2-fbe2fe1941eb) Public API in [REST_API_extract.py](REST_API_extract.py).
+
+### 7. Configuring a Snowflake Storage Integration to Access Amazon S3
+As one of the options for configuring access to the S3 bucket from a Snowflake instance, the author of this book recommended **a Snowflake storage integration**, so I selected the option. Regarding how-to, please refer to [the latest Snowflake documentation](https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration)
+
       
-### 7. Others
+### 8. Others
 - Kafka & Debezium
 
-   The book briefly mentions **Kafka and Debezium** as a recommended solution for ingesting data from a CDC system such as MySQL binlogs or Postgres WALs. However, there was no exercise example for that. It is good to explore them. [debesizum tutorial](https://debezium.io/documentation/reference/1.2/tutorial.html)
+   The book briefly mentions **Kafka and Debezium** as a recommended solution for ingesting data from a CDC system such as MySQL binlogs or Postgres WALs. However, there was no exercise example for that. It is good to explore them. [debesizum tutorial](https://debezium.io/documentation/reference/1.2/tutorial.html).
 
    ###### CDC (Change Data Capture): the tracking of all changes in a data source (database, data warehouse, etc) so they can be captured in destination systems
 
