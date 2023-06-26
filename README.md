@@ -91,6 +91,10 @@ The REST API that the code exercise of the book is using is [Open Notify](http:/
 ### 7. Configuring a Snowflake Storage Integration to Access Amazon S3
 As one of the options for configuring access to the S3 bucket from a Snowflake instance, the author of this book recommended **a Snowflake storage integration**, so I selected the option. Regarding how-to, please refer to [the latest Snowflake documentation](https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration)
 
+- For initial setup of snowflake data warehouse
+   After you create Snowflake account and login, you need to do initial setup on Snowflake, which is the sql query.
+   You can run the [sql query](database/snowflake_setup_sql.txt) on Snowflake console. 
+
       
 ### 8. Others
 - Kafka & Debezium
