@@ -23,6 +23,4 @@ CREATE STAGE <your-stage-name>
 storage_integration = <your-name-storage-integration-name>
 url = 's3://<bucket-name>/<path>' file_format = pipe_csv_format;
 
-COPY INTO <your table name in snowflake>
-FROM @<your-stage-name>/<file_name_in_s3>;
 
