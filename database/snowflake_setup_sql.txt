@@ -1,0 +1,28 @@
+DROP DATABASE IF NOT EXISTS <your-database-name>;
+
+CREATE DATABASE IF NOT EXISTS <your-database-name>;
+
+--create the table of which columns matche one in s3 bucket
+CREATE TABLE IF NOT EXISTS Orders(OrderId int,OrderStatus varchar(30), LastUpdated timestamp);
+
+--create a file format
+CREATE or REPLACE FILE FORMAT pipe_csv_format TYPE = 'csv'
+FIELD_DELIMITER = '|';
+
+-- get 'STORAGE_AWS_IAM_USER_ARN' and 'STORAGE_AWS_EXTERNAL_ID' from the returned value
+-- update the AWS role's trust relationship at IAM (line 7 & 13)
+DESC INTEGRATION s3_int_2;
+CREATE STORAGE INTEGRATION <your-name-storage-integration-name>
+  TYPE = EXTERNAL_STAGE
+  STORAGE_PROVIDER = 'S3'
+  ENABLED = TRUE
+  STORAGE_AWS_ROLE_ARN = '<your-role-arn>'
+  STORAGE_ALLOWED_LOCATIONS = ('s3://<bucket-name>/<path>', 's3://<bucket-name>/<path>');
+
+CREATE STAGE <your-stage-name>
+storage_integration = <your-name-storage-integration-name>
+url = 's3://<bucket-name>/<path>' file_format = pipe_csv_format;
+
+COPY INTO <your table name in snowflake>
+FROM @<your-stage-name>/<file_name_in_s3>;
+
