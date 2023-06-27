@@ -24,7 +24,8 @@ path = split_url.path
 print(f"path: {path} \n")
 parsed_url.append(path)
 
-# utm parameters
+# utm parameters : Urchin Tracking Module (UTM) parameters are URL parameters
+# that are used for tracking marketing and ad campaigns 
 print(f"utm content: {params['utm_content'][0]} ")
 parsed_url.append(params['utm_content'][0])
 print(f"utm medium: {params['utm_medium'][0]} ")
