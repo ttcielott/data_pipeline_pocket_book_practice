@@ -1,6 +1,8 @@
 boto3==1.26.151
+dnspython==2.3.0
 confparser==0.1.7
 mysql-replication==0.41
+pandas==2.0.2
 psycopg2-binary==2.9.6
 pymongo==4.3.3
 PyMySQL==1.0.3
