@@ -1,4 +1,4 @@
-# The Book, Data Pipeline Pocket Reference [Code Practice]
+g# The Book, Data Pipeline Pocket Reference [Code Practice]
 
 This repo is about my personal code practices that I followed along the code exercises from the book, ["Data Pipelines Pocket Reference"](https://www.oreilly.com/library/view/data-pipelines-pocket/9781492087823/) written by ['James Densmore'](https://www.linkedin.com/in/jamesdensmore/)
 <br>
@@ -95,8 +95,13 @@ As one of the options for configuring access to the S3 bucket from a Snowflake i
    After you create Snowflake account and login, you need to do initial setup on Snowflake, which is the sql query.
    You can run the [sql query](database/snowflake_setup_sql.txt) on Snowflake console. 
 
-      
-### 8. Others
+it### 8. Data Modeling
+Please run the codes in the following order.
+   1. [1_data_modeling_table_creation.py](1_data_modeling_table_creation.py)
+   2. [2_data_modeling.py](2_data_modeling.py)
+   3. [3_data_modeling_scd-for-fully-refreshed-data.py](3_data_modeling_scd-for-fully-refreshed-data.pygit)
+   
+### 9. Others
 - Kafka & Debezium
 
    The book briefly mentions **Kafka and Debezium** as a recommended solution for ingesting data from a CDC system such as MySQL binlogs or Postgres WALs. However, there was no exercise example for that. It is good to explore them. [debesizum tutorial](https://debezium.io/documentation/reference/1.2/tutorial.html).
