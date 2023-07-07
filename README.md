@@ -95,13 +95,96 @@ As one of the options for configuring access to the S3 bucket from a Snowflake i
    After you create Snowflake account and login, you need to do initial setup on Snowflake, which is the sql query.
    You can run the [sql query](database/snowflake_setup_sql.txt) on Snowflake console. 
 
-it### 8. Data Modeling
+### 8. Data Modeling
 Please run the codes in the following order.
    1. [1_data_modeling_table_creation.py](1_data_modeling_table_creation.py)
    2. [2_data_modeling.py](2_data_modeling.py)
    3. [3_data_modeling_scd-for-fully-refreshed-data.py](3_data_modeling_scd-for-fully-refreshed-data.pygit)
-   
-### 9. Others
+
+### 9. Apache Airflow Installation
+I installed airflow on my virtual environment following the instruction on [How to Install Apache Airflow on Windows without Docker](https://www.freecodecamp.org/news/install-apache-airflow-on-windows-without-docker/) written by Aviator Ifeanyichukwu.
+
+**Errors handling**
+
+The installed `pydantic` library didn't work, so I uninstall it and reinstall lower version.
+   ```
+   pip uninstall pydantic
+   pip install pydantic==1.10.7.
+   ```
+
+According to warning message when installing `pydantic==1.10.7`, I also installed `apache-airflow cncf.kubernetes`.
+
+   ```
+   pip install apache-airflow-providers-cncf-kubernetes
+   ```
+
+In `Step 4. Create an Airflow User` of [How to Install Apache Airflow on Windows without Docker](https://www.freecodecamp.org/news/install-apache-airflow-on-windows-without-docker/), some flags are written with one dash (e.g. -password), but please make sure to add two dashes (e.g. --password).
+
+Regarding setting airflow home, I ran the following code on command line prompt.
+```
+export AIRFLOW_HOME=~/airflow
+```
+
+**Run the Webserver**
+1. Run the scheduler.
+   ```
+   airflow scheduler
+   ```
+2. Launch another terminal, activate the virtual environment if it isn't.
+cd to $AIRFLOW_HOME, and run the webserver
+   ```
+   airflow webserver
+   ```
+
+   If you are using the port 8080 for something else, change the port for airflow by typing.
+For example, I assigned 8090 instead.
+   ```
+   airflow webserver -port 8090
+   ```
+
+3. Open `localhost:8090` on your web browser and log in to the user interface using the user name created earlier with "airflow users create".
+
+   - You can terminate `airflow scheduler` & `airflow webserver` by simply hitting `Ctrl + C` on command line prompt.
+
+**Setting up a database**
+Airflow uses a datase to store the followings:
+   - all the metadata related to the execution history of each task and DAG 
+   - your Airflow configuration
+
+By default, Airflow uses a SQLite database. With `airflow db init` command, Airflow also creates a SQLite database for you. For a small-scale project, that's just fine. However, for larger scale needs the author suggests using a MySQL or Postgres database.
+
+Airflow uses Sql Alchemy library behind the scenes and can easily be reconfigured to use such a database instead of SQLite.
+
+[How to Setup a Database Backend with Airflow](https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#database-uri)
+   1) MySQL Database for Airflow
+
+      I chose a MySQL database for this, so I replaced `sql_alchemy_conn` with mysql connection string on `airflow.cfg` in airflow folder. (`cd ~/airflow` -> `nano airflow.cfg` )
+      Originally, I tried the following connection string, but it didn't work for me.
+      ```
+      sql_alchemy_conn = mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
+      ```
+      Instead, I installed `mysqlconnector` by  running
+      ```
+      pip insatall mysql-connector-python
+      ```
+      And replaced `sql_alchemy_conn` with the following.
+      ```
+      mysql+mysqlconnector://<user>:<password>@<host>[:<port>]/<dbname>
+      ```
+      When I access my mysql datadase with `pymysql` library, the port number of mysql adminer docker container, which is 8080, but it didn't work for this case. When I changed the port to 3306, which is mysql docker container, the connection was successful.
+
+      When reinitializing the Airflow database in MySQL with the following command
+
+      ```
+      airflow db init
+      ```
+         **Tables created on airflow_db after running `airflow db init`**
+         If you check the database, airflow_db on MySQL adminer UI, you can see the tables (in my case, 42 tables) have created. You will be able to see all your airflow metadata here. You can query data on airflow activity, so there is no better way to analyse the performance of your pipeline.
+
+         <img src='documentation/screenshots/airflow_db_init.png' width = 800></img>
+
+
+### 10. Others
 - Kafka & Debezium
 
    The book briefly mentions **Kafka and Debezium** as a recommended solution for ingesting data from a CDC system such as MySQL binlogs or Postgres WALs. However, there was no exercise example for that. It is good to explore them. [debesizum tutorial](https://debezium.io/documentation/reference/1.2/tutorial.html).
