@@ -139,7 +139,7 @@ cd to $AIRFLOW_HOME, and run the webserver
    If you are using the port 8080 for something else, change the port for airflow by typing.
 For example, I assigned 8090 instead.
    ```
-   airflow webserver -port 8090
+   airflow webserver --port 8090
    ```
 
 3. Open `localhost:8090` on your web browser and log in to the user interface using the user name created earlier with "airflow users create".
