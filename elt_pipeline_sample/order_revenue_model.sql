@@ -4,6 +4,8 @@ order_country varchar(10),
 total_revenue numeric,
 order_count int );
 
+TRUNCATE order_summary_daily;
+
 INSERT INTO order_summary_daily ( order_date, order_country, total_revenue, order_count )
 SELECT
 o.OrderDate AS order_date,

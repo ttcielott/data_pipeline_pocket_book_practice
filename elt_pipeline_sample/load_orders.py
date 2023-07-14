@@ -40,7 +40,8 @@ file_path = ("s3://"
 role_string = ("arn:aws:iam::"
                + account_id
                + ":role/" + iam_role)
-sql = """copy public.Orders
+sql = """truncate public.Orders;
+        copy public.Orders
         from %s
         iam_role %s;"""
 
