@@ -147,6 +147,7 @@ For example, I assigned 8090 instead.
    - You can terminate `airflow scheduler` & `airflow webserver` by simply hitting `Ctrl + C` on command line prompt.
 
 **Setting up a database**
+
 Airflow uses a datase to store the followings:
    - all the metadata related to the execution history of each task and DAG 
    - your Airflow configuration
@@ -182,6 +183,45 @@ Airflow uses Sql Alchemy library behind the scenes and can easily be reconfigure
          If you check the database, airflow_db on MySQL adminer UI, you can see the tables (in my case, 42 tables) have created. You will be able to see all your airflow metadata here. You can query data on airflow activity, so there is no better way to analyse the performance of your pipeline.
 
          <img src='documentation/screenshots/airflow_db_init.png' width = 800></img>
+
+**Email notification on Dag Failure**
+1. Set up at Gmail account
+   
+   - Enable IMAP
+   1) Go to gmail setting (gear symbol on top right) 
+      -> see all settings 
+   2) Select 'Forwarding and POP/IMAP' tab
+   3) Scroll down and find 'IMAP access' and tick 'Enable IMAP'
+   <img src =https://df6asyv2kv4zi.cloudfront.net/use-emailoperator-airflow-dag/images/bigdata_3.jpg width = 800></img>
+   4) Save the change
+      Now you allowed other clients to access Gmail using IMAP
+   
+   - Generate GoogleApp Password
+   5) Go to [your app password](https://security.google.com/settings/security/apppasswords). You may be asked to sign in to your google account.
+   6) Click 'Select app' and choose 'email'
+   7) Click 'Select Device' and choose 'custom'
+   8) Name the device, for example, 'airflow' and click 'Generate'
+   9) Copy the app password
+
+   - Edit airflow.cfg
+   10) Open `~/airflow/airflow.cfg`
+   11) Find [smtp] section and edit as below.
+         ```
+         smtp_host = smtp.gmail.com
+         smtp_starttls = True
+         smtp_ssl = False
+         smtp_user = [ your id ]@gmail.com
+         smtp_password = [copied app password. see 9. above]
+         smtp_port = 25
+         smtp_mail_from = airflow@example.com
+         smtp_timeout = 30
+         smtp_retry_limit = 5
+         ```
+   12) save the change
+
+2. Add email argument on Dag
+
+   For the code example, please refer to [elt_pipeline_sample/elt_pipeline_sample.py](elt_pipeline_sample/elt_pipeline_sample.py) which is my dag description file.
 
 
 ### 10. Others
