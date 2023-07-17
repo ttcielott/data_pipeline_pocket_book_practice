@@ -1,3 +1,5 @@
+# this is a dag description file. It should be located in your airflow dag folder 
+# check out your dags folder directory in ~airflow/airflow.cfg
 from datetime import timedelta
 from airflow import DAG
 from airflow.operators.bash import BashOperator
