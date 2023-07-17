@@ -184,6 +184,15 @@ Airflow uses Sql Alchemy library behind the scenes and can easily be reconfigure
 
          <img src='documentation/screenshots/airflow_db_init.png' width = 800></img>
 
+**How To Trigger Dag**
+
+You can easily trigger your dag on demand using play button and clicking 'trigger dag'. 
+However, you can also trigger on cli. 
+```
+airflow dags trigger [your dag id]
+```
+
+
 **Email notification on Dag Failure**
 1. Set up at Gmail account
    
@@ -222,6 +231,10 @@ Airflow uses Sql Alchemy library behind the scenes and can easily be reconfigure
 2. Add email argument on Dag
 
    For the code example, please refer to [elt_pipeline_sample/elt_pipeline_sample.py](elt_pipeline_sample/elt_pipeline_sample.py) which is my dag description file.
+
+3. ExternalTaskSensor
+   You can have a specific task in one dag or dag itself trigger the other dag using `ExternalTaskSensor`. 
+   However, please note by default, for example, if the dag with `ExternalTaskSensor` ran at 10:00:00 today, it would check if the external dag which was run at the same execution time today was passed as success. 
 
 
 ### 10. Others
