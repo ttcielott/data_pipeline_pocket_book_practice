@@ -7,12 +7,10 @@
 # and also two dags should be run on the same execution date and the same schedule interval
 # if the two DAGs run on different schedules, then it's best to specify which run of a master dag a slave should check on.
 # by using either the execution_delta or execution_date_fn parameter
-from datetime import datetime
 from airflow import DAG
-from airflow.operators.empty import EmptyOperator
 from airflow.sensors.external_task import ExternalTaskSensor
 from airflow.operators.email import EmailOperator
-from datetime import datetime, timedelta
+from datetime import timedelta
 from airflow.utils.dates import days_ago
 
 default_args = {
@@ -31,8 +29,8 @@ dag = DAG(
     dag_id = 'sensor_test',
     default_args=default_args,
     description = 'DAG with a sensor',
-    schedule_interval = timedelta(hours = 1),
-    start_date = datetime.now()
+    schedule_interval = timedelta(days = 1),
+    start_date = days_ago(1)
 )
 
 sensor1 = ExternalTaskSensor(
