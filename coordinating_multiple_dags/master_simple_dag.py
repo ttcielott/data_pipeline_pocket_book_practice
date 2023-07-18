@@ -6,8 +6,8 @@ from airflow.utils.dates import days_ago
 dag = DAG(
     'simple_dag',
     description='A simple DAG',
-    schedule_interval = timedelta(hours= 1),
-    start_date = datetime.now()
+    schedule_interval = timedelta(days= 1),
+    start_date = days_ago(1)
 )
 
 t1 = BashOperator(
