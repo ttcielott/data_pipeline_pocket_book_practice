@@ -236,6 +236,12 @@ airflow dags trigger [your dag id]
    You can have a specific task in one dag or dag itself trigger the other dag using `ExternalTaskSensor`. 
    However, please note by default, for example, if the dag with `ExternalTaskSensor` ran at 10:00:00 today, it would check if the external dag which was run at the same execution time today was passed as success. 
 
+**Slack notification on Dag Failure**
+   By adding webhooks to your slack channel, you can send message to your slack channel.
+   1) in your slack channel, go to `Setting & administration` and select `manage apps`
+   <img src = 'documentation/screenshots/slack_webhook_01.png' width =800><img>
+   2) go to `App Management Setting` ans search `Incoming Webhooks`.
+   <img src = 'documentation/screenshots/slack_webhook_02.png' width =800><img>
 
 ### 10. Others
 - Kafka & Debezium
