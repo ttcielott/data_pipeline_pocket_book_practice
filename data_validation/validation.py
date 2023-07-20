@@ -77,15 +77,16 @@ if __name__ == "__main__":
 
         exit(0)
 
-if len(sys.argv) != 4:
-    print("Usage: python validator.py"
-            + "script1.sql script2.sql "
-            + "comparison_operator")
-    exit(-1)
+    if len(sys.argv) != 5:
+        print("Usage: python validator.py"
+                + "script1.sql script2.sql "
+                + "comparison_operator")
+        exit(-1)
 
 script_1 = sys.argv[1]
 script_2 = sys.argv[2]
 comp_operator = sys.argv[3]
+sev_level = sys.argv[4]
 
 # connect to the data warehouse
 db_conn = connect_to_warehouse()
@@ -97,14 +98,8 @@ test_result = execute_test(
                 comp_operator)
 
 print("Result of test: " + str(test_result))
+
 if test_result == True:
-    send_slack_notification(
-        webhook_url,
-        script_1,
-        script_2,
-        comp_operator,
-        test_result
-    )
     exit(0)
 else:
     send_slack_notification(
@@ -114,4 +109,8 @@ else:
         comp_operator,
         test_result
     )
-    exit(-1)
+    
+    if sev_level ==  'halt':
+        exit(-1)
+    else:
+        exit(0)
