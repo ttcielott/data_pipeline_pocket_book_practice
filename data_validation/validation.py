@@ -62,6 +62,34 @@ def execute_test(
         # if we made it here, something went wrong
     return False
 
+def log_result(
+        db_conn,
+        script_1,
+        script_2,
+        comp_operator,
+        result
+):
+    m_query = """
+              INSERT INTO validation_run_history(
+                script1, 
+                script2,
+                comp_operator,
+                test_result,
+                test_run_at
+              )
+              VALUES(%s,%s,%s,%s, current_timestamp);
+              """
+    m_cursor = db_conn.cursor()
+    m_cursor.execute(
+        m_query, (script_1, script_2, comp_operator, result)
+    )
+    db_conn.commit()
+
+    m_cursor.close()
+    db_conn.close()
+
+    return
+
 if __name__ == "__main__":
     if len(sys.argv) == 2 and sys.argv[1] == "-h": 
         print("Usage: python validator.py"
@@ -96,6 +124,14 @@ test_result = execute_test(
                 script_1,
                 script_2,
                 comp_operator)
+
+# log the test in the data warehouse (redshift)
+log_result(
+    db_conn,
+    script_1,
+    script_2,
+    comp_operator,
+    test_result)
 
 print("Result of test: " + str(test_result))
 
