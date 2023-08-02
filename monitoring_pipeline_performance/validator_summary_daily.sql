@@ -14,18 +14,18 @@ INSERT INTO validator_summary_daily
 (test_date, script_1, script_2, comp_operator,
 test_composite_name, test_result, test_count)
 SELECT
-    CAST(test_run_at AS DATE) as test_date,
+    CAST(test_run_at AS DATE) AS test_date,
     script_1,
     script_2,
     comp_operator,
-    (script_1 || ' ' script_2 || ' ' || comp_operator) AS test_composite_name,
+    (script_1 || ' '|| script_2 || ' ' || comp_operator) AS test_composite_name,
     test_result,
     COUNT(*) AS test_count
 FROM validation_run_history
 GROUP BY
-     CAST(test_run_at AS DATE) as test_date,
+    CAST(test_run_at AS DATE),
     script_1,
     script_2,
     comp_operator,
-    (script_1 || ' ' script_2 || ' ' || comp_operator),
+    (script_1 || ' '|| script_2 || ' ' || comp_operator),
     test_result;

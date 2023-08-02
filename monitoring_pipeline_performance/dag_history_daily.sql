@@ -8,13 +8,14 @@ CREATE TABLE IF NOT EXISTS dag_history_daily (
 
 TRUNCATE TABLE dag_history_daily;
 
-INSERT INTO (execution_Date, dag_id, dag_state, runtime_seconds, dag_run_count)
-SELECT CAST(execution_date, DATE),
+INSERT INTO dag_history_daily (execution_date, dag_id, dag_state, runtime_seconds, dag_run_count)
+SELECT CAST(execution_date AS DATE),
        dag_id,
        state,
        SUM(EXTRACT(EPOCH FROM (end_date - start_date))),
        COUNT(*) AS dag_run_history
-GROUP BY CAST(execution_date as DATE),
+FROM dag_run_history
+GROUP BY CAST(execution_date AS DATE),
         dag_id,
         state;
 

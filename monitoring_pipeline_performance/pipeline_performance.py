@@ -29,7 +29,7 @@ dag_history_model_task = PostgresOperator(task_id = 'dag_history_model',
 
 validation_history_model_task = PostgresOperator(task_id = 'validation_history_model',
                                      postgres_conn_id = 'redshift_dw',
-                                     sql = 'validator_summary_model.sql',
+                                     sql = 'validator_summary_daily.sql',
                                      dag = dag
 )
 
